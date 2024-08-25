@@ -53,8 +53,12 @@ const wsServer=new WebSocket.Server({server});
 
     socket.on('message', (data) => {
       console.log(data);//this event handler will define behaviour every single socket will use in responding message
-      socket.send('Message recieved: '+data);
+      // socket.send('Message recieved: '+data);
       // console.log("sent");
+      wsServer.clients.forEach(connectedSocket => {
+        if(connectedSocket.readyState === WebSocket.OPEN && connectedSocket !== socket)
+        connectedSocket.send(data);
+      })
     });
   })//resonse on method to define response to the "connection" event and second parameter is "callback" function which 
   //callback will be executed each time new client establishes a connection to our server socket parameter represent the ongoing connection
