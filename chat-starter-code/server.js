@@ -52,7 +52,7 @@ const wsServer=new WebSocket.Server({server});
     console.log('A new client has connected to the server ');
 
     socket.on('message',(data)=>{
-      console.log(data);
+      console.log(data);//this event handler will define behaviour every single socket will use in responding message
     })
   })//resonse on method to define response to the "connection" event and second parameter is "callback" function which 
   //callback will be executed each time new client establishes a connection to our server socket parameter represent the ongoing connection
