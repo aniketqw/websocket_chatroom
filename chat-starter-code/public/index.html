@@ -75,12 +75,20 @@
       // TODO:
       // Exercise 5: Respond to connections by defining the .onopen event handler.
 
+      //RESPOND TO SERVER  
+      wsClient.onopen = ()=>{
+        console.log("Connection to the websocket server established");
+      }
 
       // TODO:
       // Exercise 7: Respond to messages from the servery by defining the .onmessage event handler
       // Exercise 9: Parse custom message types, formatting each message based on the type.
 
-
+      wsClient.onmessage = (messageEvent) => {
+        const message = messageEvent.data;
+        showMessageReceived(message);
+        // console.log("received "+message);
+      }
 
       /* Note:
       The event handlers below are useful for properly cleaning up a closed/broken WebSocket client connection.
@@ -110,6 +118,8 @@
       // TODO: 
       // Exercise 6: Send the message from the messageBox to the server
       // Exercise 9: Send the message in a custom message object with .type and .payload properties
+      
+      wsClient.send(message);
     }
 
     ////////////////////////////////////////////////
