@@ -37,9 +37,9 @@ const server = http.createServer((req, res) => {
 
 // TODO
 // Exercise 3: Create the WebSocket Server using the HTTP server
-const WebSocket=require('ws');
+
 //httpServer is a premade HTTP server
-const wsServer=new WebSocket.Server({server:httpServer});
+const wsServer=new WebSocket.Server({server});
 
 // TODO
 // Exercise 5: Respond to connection events 
